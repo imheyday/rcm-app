@@ -60,21 +60,21 @@ export default i18n;
 
     /*** 밈 컨셉 *****/
     el("h2", "치키니"),
-    el("img.logo", { src: "/images/injeolmi.png", height: "330" }),
+    el("img.logo", { src: "/images/main_banner.png", height: "240" }),
     el(
       "p",
-      '우리나라에는 새로 이사를 오면 떡을 돌리는 풍습이 있습니다. 이런 "떡돌리기" 문화를 토크노믹스로 만들어 보았습니다. 한국인의 정과 훈훈한 인심을 느껴보세요.'
+      '치키니는 모든이가 좋아합니다. 양념이 골고루 묻어나도록 도와주세요~  코인 피로에 너무 많이 지치신 여러분을 위해서 만들었습니다. 차라리 내가 튀긴다. '
     ),
 
     /*** 밈 알고리즘 *****/
-    el("h3", "인절미 떡크노믹스"),
+    el("h3", "치키니가 배달되는 방법"),
     el(
       "p",
-      "토큰 전송 시 10% 떼감 -> 9%는 홀더들한테 떡돌림, 1%는 떡방앗간에 팁으로 제공 (팁은 이벤트, 에드, 기부, 개발자 사리사욕에 쓰임)"
+      "전송 시 8% 떼어냅니다 -> 7%는 치맥이들에게 골고루 나눠집니다, 1%는 치킨집에 팁으루 (팁은 이벤트, 에드, 기부, 개발팀 식량으로 쓰입니다 )"
     ),
     el(
       "p",
-      "인절미는 클레이튼 최초의 밈 토큰입니다. 따라서 클레이튼 지갑인 ",
+      "치키니는 클레이튼 밈 토큰입니다. 따라서 클레이튼 지갑",
       el("a", "카이카스 지갑", {
         href: "https://chrome.google.com/webstore/detail/kaikas/jblndlipeogpafnldhgmapagcccfchpi",
         target: "_blank",
@@ -83,7 +83,7 @@ export default i18n;
     ),
     el(
       ".links",
-      el("a", "인절미 카이카스 지갑에 추가", {
+      el("a", "치키니 카이카스 지갑에 추가", {
         click: () =>
           Wallet.addToken(
             InjeolmiContract.address,
@@ -92,7 +92,7 @@ export default i18n;
             "https://raw.githubusercontent.com/ricecakemill/rcm-app/main/docs/images/injeolmi.png"
           ),
       }),
-      el("span.danger", "(클립은 영원히 지원 계획이 없습니다.)"),
+      // el("span.danger", "(클립은 영원히 지원 계획이 없습니다.)"),
       "\n",
       el(
         "a",
@@ -103,11 +103,11 @@ export default i18n;
         }
       ),
       "\n",
-      el("a", "소스 코드", {
-        href: "https://github.com/ricecakemill/injeolmi",
-        target: "_blank",
-      }),
-      "\n",
+      // el("a", "소스 코드", {
+      //   href: "https://github.com/ricecakemill/injeolmi",
+      //   target: "_blank",
+      // }),
+      // "\n",
       el("a", "차트 보기", {
         href: "https://dexata.kr/?tokenA=0x9cfc059f64d664f92f3d0329844b8ccca4e5215b&tokenB=0x0000000000000000000000000000000000000000",
         target: "_blank",
@@ -117,17 +117,17 @@ export default i18n;
     /*** 밈 가격 에어드롭 *****/
     el(
       ".card",
-      el("h5", "인절미 가격"),
+      el("h5", "치키니 가격"),
       el("h6", (priceDisplay = el("span.price", "...")), " KLAY\n"),
       el("h5", "에어드롭 물량"),
-      el("h6", (airdropDisplay = el("span.price", "...")), " IJM\n"),
+      el("h6", (airdropDisplay = el("span.price", "...")), " CHK\n"),
       (firstcomeAirdropEvent = el(".event"))
     ),
 
     
     /*** 밈 거래 *****/
-    el("h3", "클레이로 인절미 사기"),
-    el("p", "인절미를 살때도 떡크노믹스 때문에 10%를 적게 받습니다."),
+    el("h3", "클레이로 치키니 사기"),
+    el("p", "치키니를 살때 양념소스때문에 8%를 적게 받습니다. 양념소스가 많이 쌓이면 치키니NFT를 살 수 있는 권한이 부여됩니다"),
     el(
       ".form",
       (buyInput = el(
@@ -141,7 +141,7 @@ export default i18n;
               .appendText(
                 `대략 ${utils.formatEther(
                   value.mul(utils.parseEther("1")).div(ijmPrice).mul(9).div(10)
-                )} IJM`
+                )} CHK`
               );
           },
         }
@@ -156,13 +156,13 @@ export default i18n;
       })
     ),
 
-    el("h3", "인절미 클레이로 펄기"),
-    el("p", "인절미를 펄때도 떡크노믹스 때문에 10%를 적게 받습니다."),
+    el("h3", "치키니 클레이로 팔기"),
+    el("p", "치키니가 이미 식어서 못먹기 때문에 8%를 적게 받습니다."),
     el(
       ".form",
       (sellInput = el(
         "input",
-        { placeholder: "IJM 수량" },
+        { placeholder: "CHK 수량" },
         {
           keyup: () => {
             const value = utils.parseEther(sellInput.domElement.value);
@@ -177,7 +177,7 @@ export default i18n;
         }
       )),
       (sellResult = el(".result")),
-      el("button", "펄기", {
+      el("button", "팔기", {
         click: async () => {
           await InjeolmiPoolContract.swapToKlay(
             utils.parseUnits(sellInput.domElement.value, 8)
@@ -187,17 +187,17 @@ export default i18n;
     ),
 
     /*** 밈 컨텐츠 NFT *****/
-    el("h2", "떡방앗간 곳간"),
+    el("h2", "치키니 박물관"),
     el(
       "p",
-      "곳간은 떡방앗간 코인 이야기의 자산들이 보관된 곳입니다.\n어디에도 주거나 팔지 않고 영원히 간직됩니다."
+      "치키니 코인 이야기의 자산들이 보관되어 있습니다.\n "
     ),
-    el("a", "곳간 주소\nhttps://opensea.io/ricecakemill", { href: "https://opensea.io/ricecakemill", target: "_blank" }),
+    el("a", "박물관 주소\nhttps://opensea.io/chickeny", { href: "https://opensea.io/chickeny", target: "_blank" }),
 
-    el("h2", "떡 NFT"),
+    el("h2", "CHICKENY NFT"),
     el(
       "p",
-      "떡 NFT(KIP-37) 발행 예정입니다. 순수 2차 창작물로 발행되며 만든 참새에게 발행된 NFT를 전량 전달합니다. 떡 NFT는 Klubs가 출시되면 Klubs에 배포됩니다."
+      "CHICKENY NFT(KIP-37) 는 총 1000개가 발행되었습니다. 순수 2차 창작물로 발행되며 만든 이들에게 발행된 NFT를 전량 전달합니다. CHICKENY NFT는 어디든 배포가능합니다."
     ),
     el(
       ".carousel-container",
@@ -260,10 +260,10 @@ export default i18n;
 
     
     /*** 밈 게임 *****/
-    el("h2", "떡방앗간 팬게임"),
-    el("p", "참새들이 만든 떡방앗간 팬게임입니다."),
-    el("img", { src: "/images/game/flappy.png", height: "300" }),
-    el("a.game-link", "플래피 인절미", {
+    el("h2", "치키니 팬게임"),
+    el("p", "치매기들이 만든 치키니 팬게임입니다."),
+    el("img", { src: "/images/game/main.png", height: "300" }),
+    el("a.game-link", "플래피 치키니", {
       href: "https://flappy-injeolmi.netlify.app/",
       target: "_blank",
     }),
@@ -273,7 +273,7 @@ export default i18n;
     el(
       "footer",
       el("a", "트위터", {
-        href: "https://twitter.com/ricecakemill",
+        href: "https://twitter.com/chickeny",
         target: "_blank",
       }),
       "\n",
@@ -307,11 +307,11 @@ export default i18n;
         if (dropped === true) {
           firstcomeAirdropEvent
             .empty()
-            .appendText("선착순 떡돌리기 이벤트 참여 완료");
+            .appendText("선착순 반값 치키니 이벤트 참여 완료");
         } else {
           firstcomeAirdropEvent.empty().append(
-            el("h5", "★☆ 선착순 떡돌리기 이벤트 진행중! ☆★"),
-            el("a", "인절미 받기", {
+            el("h5", "★☆ 선착순 반값 치키니 이벤트 진행중! ☆★"),
+            el("a", "치키니 받기", {
               click: async () => {
                 await FirstcomeAirdropContract.airdrop();
               },
