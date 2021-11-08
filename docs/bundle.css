@@ -183,7 +183,7 @@ body {
   margin: auto;
   padding: 20px;
   text-align: center;
-  background: url("/images/background.jpg");
+  background: url("./images/background.jpg");
 }
 a {
   color: blue;
