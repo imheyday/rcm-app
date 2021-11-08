@@ -6,6 +6,28 @@ import InjeolmiContract from "./contracts/InjeolmiContract";
 import InjeolmiPoolContract from "./contracts/InjeolmiPoolContract";
 import InjeolmiPriceContract from "./contracts/InjeolmiPriceContract";
 import Wallet from "./klaytn/Wallet";
+import i18n from 'i18next';
+
+import tranEn from './Locales/Files/en.json';
+import tranKo from './Locales/Files/ko.json';
+
+const resources = {
+  en: { translation: tranEn },
+  ko: { translation: tranKo },
+}
+const userLanguage = window.navigator.language;
+
+// i18n.use(initReactI18next).init({
+//   resources,
+//   lng: localStorage.getItem('language') || userLanguage || 'en',
+//   fallbackLng: 'en',
+//   keySeparator: false,
+//   interpolation: {
+//     escapeValue: false
+//   }
+// })
+
+export default i18n;
 
 (async () => {
   let priceDisplay: DomNode;
@@ -23,24 +45,28 @@ import Wallet from "./klaytn/Wallet";
   let index = 0;
 
   BodyNode.append(
-    el("h1", "떡방앗간.닷컴"),
+    /*** 타이틀 설명 , 프로젝트의 시작 *****/
+    el("h1", "내사랑 치키니"),
     el(
       "p",
-      "한국인의 정과 훈훈한 인심. 따뜻한 코인 커뮤니티 떡방앗간 코인 이야기. \n",
-      el("a", "http://ricecakemill.com", {
-        href: "http://ricecakemill.com",
+      "누구나 좋아하는 치키니. 노예로 끌려와 닭찌꺼기를 튀겨서 먹었다는 서민의 원조. 치키니는 누구나 좋아하는 코인입니다. 치킨은 항상 반반을 시키자. \n",
+      el("a", "http://chickeness.com", {
+        href: "http://chickeness.com",
         target: "_blank",
       }),
-      "으로도 접속하실 수 있습니다.\n떡방앗간 회원들은 \"참새\"로 불리웁니다."
+      ".\n치킨집 회원들은 \"치맥이\" "
     ),
 
-    el("h2", "인절미"),
+
+    /*** 밈 컨셉 *****/
+    el("h2", "치키니"),
     el("img.logo", { src: "/images/injeolmi.png", height: "330" }),
     el(
       "p",
       '우리나라에는 새로 이사를 오면 떡을 돌리는 풍습이 있습니다. 이런 "떡돌리기" 문화를 토크노믹스로 만들어 보았습니다. 한국인의 정과 훈훈한 인심을 느껴보세요.'
     ),
 
+    /*** 밈 알고리즘 *****/
     el("h3", "인절미 떡크노믹스"),
     el(
       "p",
@@ -87,6 +113,8 @@ import Wallet from "./klaytn/Wallet";
         target: "_blank",
       })
     ),
+
+    /*** 밈 가격 에어드롭 *****/
     el(
       ".card",
       el("h5", "인절미 가격"),
@@ -96,6 +124,8 @@ import Wallet from "./klaytn/Wallet";
       (firstcomeAirdropEvent = el(".event"))
     ),
 
+    
+    /*** 밈 거래 *****/
     el("h3", "클레이로 인절미 사기"),
     el("p", "인절미를 살때도 떡크노믹스 때문에 10%를 적게 받습니다."),
     el(
@@ -156,6 +186,7 @@ import Wallet from "./klaytn/Wallet";
       })
     ),
 
+    /*** 밈 컨텐츠 NFT *****/
     el("h2", "떡방앗간 곳간"),
     el(
       "p",
@@ -226,6 +257,9 @@ import Wallet from "./klaytn/Wallet";
         });
       },
     }),
+
+    
+    /*** 밈 게임 *****/
     el("h2", "떡방앗간 팬게임"),
     el("p", "참새들이 만든 떡방앗간 팬게임입니다."),
     el("img", { src: "/images/game/flappy.png", height: "300" }),
@@ -233,6 +267,9 @@ import Wallet from "./klaytn/Wallet";
       href: "https://flappy-injeolmi.netlify.app/",
       target: "_blank",
     }),
+
+
+    /*** 밈 커뮤니티 *****/
     el(
       "footer",
       el("a", "트위터", {
